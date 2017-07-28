@@ -1,7 +1,7 @@
 import React from 'react'
 import './DisplayCampers.css'
 
-const DisplayCampers = ({campers}) =>
+const DisplayCampers = ({campers, activeState}) =>
   (<tbody>
     {campers.map((camper, index) => {
       return (
@@ -13,8 +13,18 @@ const DisplayCampers = ({campers}) =>
               {camper.username}
             </a>
           </td>
-          <td>{camper.recent}</td>
-          <td>{camper.alltime}</td>
+          <td>
+            { !index && activeState === 'recent'?
+              <strong>{camper.recent}</strong> :
+              camper.recent 
+            }
+          </td>
+          <td>
+            { !index && activeState === 'alltime'?
+              <strong>{camper.alltime}</strong> :
+              camper.alltime
+            }
+          </td>
         </tr>
       )
     })}
