@@ -48,8 +48,8 @@ class App extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th><Last30 /></th>
-              <th><AllTime /></th>
+              <th><Last30 onClick={this.fetchRecent}/></th>
+              <th><AllTime onClick={this.fetchAllTime}/></th>
             </tr>
           </thead>
 
