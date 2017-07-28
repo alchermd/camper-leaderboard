@@ -7,12 +7,19 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      campers: [
-        {"username":"SkyC0der","img":"https://avatars2.githubusercontent.com/u/24684319?v=3","alltime":2027,"recent":354,"lastUpdate":"2017-07-27T09:07:55.970Z"},
-        {"username":"sjames1958gm","img":"https://avatars2.githubusercontent.com/u/4639625?v=3","alltime":7731,"recent":311,"lastUpdate":"2017-07-14T06:41:32.735Z"},
-        {"username":"Chrono79","img":"https://avatars0.githubusercontent.com/u/9571508?v=3","alltime":4129,"recent":306,"lastUpdate":"2017-06-28T11:24:49.080Z"},
-      ]
+      campers: []
     }
+  }
+
+  componentDidMount() {
+    const recentAPI = "https://fcctop100.herokuapp.com/api/fccusers/top/recent"
+    fetch(recentAPI)
+      .then(result => result.json())
+      .then(json => 
+        this.setState({campers: json.map((camper, index) => 
+          ({...camper, key: index})
+        )})
+      )
   }
 
   render() {
@@ -29,7 +36,7 @@ class App extends React.Component {
               <th><AllTime /></th>
             </tr>
           </thead>
-          
+
           <DisplayCampers campers={this.state.campers} />
         </table>
       </div>
