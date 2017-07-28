@@ -42,6 +42,8 @@ class App extends React.Component {
   }
 
   render() {
+    const {active, campers} = this.state
+
     return (
       <div className="container">
         <h1 className="text-center">Camper Leaderboard</h1>
@@ -52,12 +54,12 @@ class App extends React.Component {
             <tr>
               <th>Rank</th>
               <th>Name</th>
-              <th><Last30 onClick={this.fetchRecent} active={this.state.active === 'recent'}/></th>
-              <th><AllTime onClick={this.fetchAllTime} active={this.state.active === 'alltime'}/></th>
+              <th><Last30 onClick={this.fetchRecent} active={active === 'recent'}/></th>
+              <th><AllTime onClick={this.fetchAllTime} active={active === 'alltime'}/></th>
             </tr>
           </thead>
 
-          <DisplayCampers campers={this.state.campers} activeState={this.state.active}/>
+          <DisplayCampers campers={campers} activeState={active}/>
         </table>
       </div>
     )
