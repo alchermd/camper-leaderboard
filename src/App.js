@@ -57,7 +57,7 @@ class App extends React.Component {
             </tr>
           </thead>
 
-          <DisplayCampers campers={this.state.campers} />
+          <DisplayCampers campers={this.state.campers} activeState={this.state.active}/>
         </table>
       </div>
     )
