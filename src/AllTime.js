@@ -1,8 +1,8 @@
 import React from 'react'
 import './AllTime.css'
 
-const AllTime = props =>
-  (<span className="AllTime">
+const AllTime = ({onClick}) =>
+  (<span className="AllTime"  onClick={() => onClick()}>
     All Time
   </span>)
 
