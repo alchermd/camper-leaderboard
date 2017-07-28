@@ -45,11 +45,12 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1 className="text-center">Camper Leaderboard</h1>
+        <p className="text-center lead">Who has the most brownie points?</p>
 
         <table className="table table-striped table-bordered table-hover">
           <thead>
             <tr>
-              <th>#</th>
+              <th>Rank</th>
               <th>Name</th>
               <th><Last30 onClick={this.fetchRecent} active={this.state.active === 'recent'}/></th>
               <th><AllTime onClick={this.fetchAllTime} active={this.state.active === 'alltime'}/></th>
