@@ -9,11 +9,27 @@ class App extends React.Component {
     this.state = {
       campers: []
     }
+
+    // Method binding.
+    this.fetchRecent = this.fetchRecent.bind(this)
+    this.fetchAllTime = this.fetchAllTime.bind(this)
+    this.fetchCampers = this.fetchCampers.bind(this)
   }
 
   componentDidMount() {
-    const recentAPI = "https://fcctop100.herokuapp.com/api/fccusers/top/recent"
-    fetch(recentAPI)
+    this.fetchRecent()
+  }
+
+  fetchRecent() {
+    this.fetchCampers("https://fcctop100.herokuapp.com/api/fccusers/top/recent")
+  }
+
+  fetchAllTime() {
+    this.fetchCampers("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
+  }
+
+  fetchCampers(APILink) {
+    fetch(APILink)
       .then(result => result.json())
       .then(json => 
         this.setState({campers: json.map((camper, index) => 
