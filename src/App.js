@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      campers: []
+      campers: [],
+      active: null
     }
 
     // Method binding.
@@ -22,10 +23,12 @@ class App extends React.Component {
 
   fetchRecent() {
     this.fetchCampers("https://fcctop100.herokuapp.com/api/fccusers/top/recent")
+    this.setState({active: 'recent'})
   }
 
   fetchAllTime() {
     this.fetchCampers("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
+    this.setState({active: 'alltime'})
   }
 
   fetchCampers(APILink) {
@@ -48,8 +51,8 @@ class App extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th><Last30 onClick={this.fetchRecent}/></th>
-              <th><AllTime onClick={this.fetchAllTime}/></th>
+              <th><Last30 onClick={this.fetchRecent} active={this.state.active === 'recent'}/></th>
+              <th><AllTime onClick={this.fetchAllTime} active={this.state.active === 'alltime'}/></th>
             </tr>
           </thead>
 
