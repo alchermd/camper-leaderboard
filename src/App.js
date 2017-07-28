@@ -1,4 +1,6 @@
 import React from 'react'
+import Last30 from './Last30'
+import AllTime from './AllTime'
 
 class App extends React.Component {
   render() {
